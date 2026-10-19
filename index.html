@@ -42,7 +42,7 @@
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 28px;
     }
 
     /* --- HERO HEADER --- */
@@ -68,6 +68,46 @@
       color: var(--text-muted);
       line-height: 1.45;
       font-weight: 400;
+    }
+
+    /* --- VIDEO DEMO CONTAINER --- */
+    .video-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 12px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .video-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      font-family: var(--font-mono);
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
     }
 
     /* --- TELEMETRY CARD MOCKUP --- */
@@ -258,6 +298,20 @@
       <h1>This isn't subjective.<br>This is <span class="highlight">telemetry.</span></h1>
       <p>Replace driver bias with exact GPS geometry, automated corner radii, hands-free speech confirmation, and instant co-driver longhand printouts.</p>
     </header>
+
+    <!-- LIVE DEMO VIDEO SECTION -->
+    <section class="video-card">
+      <div class="video-header">
+        <span>IN-ACTION DEMONSTRATION</span>
+        <span class="live-badge"><span class="live-dot"></span> REAL-TIME RECCE</span>
+      </div>
+      <div class="video-wrapper">
+        <video autoplay loop muted playsinline controls preload="metadata">
+          <source src="./demo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
 
     <!-- TELEMETRY INTERFACE CARD -->
     <main class="telemetry-card">
