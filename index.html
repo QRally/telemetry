@@ -82,10 +82,21 @@
       gap: 12px;
     }
 
+    /* Header Bar containing Title, Badges & Audio Button */
     .video-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 8px;
+    }
+
+    .header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .header-title {
       font-size: 0.72rem;
       font-weight: 700;
       color: var(--text-muted);
@@ -98,10 +109,13 @@
       color: var(--accent-red);
       padding: 2px 8px;
       border-radius: 10px;
-      font-size: 0.68rem;
-      display: flex;
+      font-size: 0.65rem;
+      display: inline-flex;
       align-items: center;
       gap: 4px;
+      width: fit-content;
+      font-family: var(--font-mono);
+      font-weight: 700;
     }
 
     .live-dot {
@@ -110,6 +124,25 @@
       background-color: var(--accent-red);
       border-radius: 50%;
       display: inline-block;
+    }
+
+    /* Audio Toggle Button in Header */
+    .audio-btn {
+      background: var(--accent-green);
+      color: #000;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 2px 10px var(--accent-green-glow);
+      transition: transform 0.1s ease, background 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .audio-btn:active {
+      transform: scale(0.95);
     }
 
     .video-wrapper {
@@ -126,28 +159,6 @@
       height: auto;
       display: block;
       border-radius: 14px;
-    }
-
-    /* Unmute Audio Overlay Button */
-    .audio-btn {
-      position: absolute;
-      bottom: 12px;
-      right: 12px;
-      background: rgba(0, 230, 118, 0.9);
-      color: #000;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-      transition: transform 0.1s ease, background 0.2s ease;
-      z-index: 10;
-    }
-
-    .audio-btn:active {
-      transform: scale(0.95);
     }
 
     /* --- CTA BUTTON --- */
@@ -193,18 +204,20 @@
       <p>Replace driver bias with exact GPS geometry, automated corner radii, hands-free speech confirmation, and instant co-driver longhand printouts.</p>
     </header>
 
-    <!-- LIVE IN-ACTION DEMO VIDEO CARD -->
+    <!-- LIVE DEMO VIDEO CARD -->
     <main class="video-card">
       <div class="video-header">
-        <span>IN-ACTION DEMONSTRATION</span>
-        <span class="live-badge"><span class="live-dot"></span> REAL-TIME RECCE</span>
+        <div class="header-left">
+          <span class="header-title">IN-ACTION DEMONSTRATION</span>
+          <span class="live-badge"><span class="live-dot"></span> REAL-TIME RECCE</span>
+        </div>
+        <button class="audio-btn" id="audio-toggle-btn" type="button">ENABLE AUDIO 🔊</button>
       </div>
       <div class="video-wrapper">
         <video id="demo-video" autoplay loop muted playsinline controls preload="metadata">
           <source src="./demo.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <button class="audio-btn" id="audio-toggle-btn" type="button">ENABLE AUDIO 🔊</button>
       </div>
     </main>
 
@@ -219,7 +232,7 @@
   </div>
 
   <script>
-    // Audio Toggle Handler for Mobile Browsers
+    // Audio Toggle Handler
     const video = document.getElementById('demo-video');
     const audioBtn = document.getElementById('audio-toggle-btn');
 
@@ -233,7 +246,7 @@
       } else {
         video.muted = true;
         audioBtn.innerText = 'ENABLE AUDIO 🔊';
-        audioBtn.style.background = 'rgba(0, 230, 118, 0.9)';
+        audioBtn.style.background = 'var(--accent-green)';
         audioBtn.style.color = '#000';
       }
     });
