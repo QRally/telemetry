@@ -82,7 +82,6 @@
       gap: 12px;
     }
 
-    /* Header Bar containing Title, Badges & Audio Button */
     .video-header {
       display: flex;
       justify-content: space-between;
@@ -126,7 +125,6 @@
       display: inline-block;
     }
 
-    /* Audio Toggle Button in Header */
     .audio-btn {
       background: var(--accent-green);
       color: #000;
@@ -176,21 +174,74 @@
       box-shadow: 0 4px 16px var(--accent-green-glow);
     }
 
-    /* --- DATA SECTION --- */
+    /* --- CSV DATA BANNER --- */
     .data-banner {
-      background: #09131a;
-      border: 1px solid rgba(41, 182, 246, 0.2);
-      border-radius: 30px;
+      background: var(--card-bg);
+      border: 1px solid rgba(41, 182, 246, 0.25);
+      border-radius: 20px;
       padding: 16px;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     }
 
-    .data-banner a {
-      color: #4dd0e1;
-      text-decoration: none;
-      font-size: 0.85rem;
+    .data-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+    }
+
+    .data-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      letter-spacing: 0.5px;
+    }
+
+    .data-badge {
+      background: rgba(41, 182, 246, 0.15);
+      color: var(--accent-blue);
+      font-size: 0.65rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+
+    .table-scroll {
+      max-height: 220px;
+      overflow-y: auto;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .csv-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-align: left;
+    }
+
+    .csv-table th {
+      background: #181c26;
+      color: var(--text-muted);
+      padding: 8px 12px;
+      position: sticky;
+      top: 0;
+      font-size: 0.7rem;
+    }
+
+    .csv-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      color: var(--text-main);
+    }
+
+    .csv-table td.highlight-call {
+      color: var(--accent-green);
       font-weight: 800;
-      letter-spacing: 1px;
     }
   </style>
 </head>
@@ -224,10 +275,51 @@
     <!-- ACTION BUTTON -->
     <a href="#system" class="btn-explore">EXPLORE QRALLY SYSTEM</a>
 
-    <!-- PACENOTE DATA BANNER -->
-    <div class="data-banner">
-      <a href="#acquisition">QRALLY • PACE NOTE DATA ACQUISITION</a>
-    </div>
+    <!-- CSV DATA STAGE OUTPUT PREVIEW -->
+    <section class="data-banner">
+      <div class="data-header">
+        <span class="data-title">STAGE CSV OUTPUT PREVIEW</span>
+        <span class="data-badge">RAW TELEMETRY DATA</span>
+      </div>
+      
+      <div class="table-scroll">
+        <table class="csv-table">
+          <thead>
+            <tr>
+              <th>Note Call</th>
+              <th>Segment (m)</th>
+              <th>Cumulative (m)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>R1</td><td>1</td><td>1</td></tr>
+            <tr><td>90</td><td>91</td><td>92</td></tr>
+            <tr><td>L1</td><td>28</td><td>120</td></tr>
+            <tr><td>R3</td><td>24</td><td>150</td></tr>
+            <tr><td>160</td><td>158</td><td>308</td></tr>
+            <tr><td>R6</td><td>51</td><td>359</td></tr>
+            <tr><td>140</td><td>135</td><td>494</td></tr>
+            <tr><td>R6</td><td>74</td><td>568</td></tr>
+            <tr><td>L5</td><td>104</td><td>672</td></tr>
+            <tr><td>90</td><td>92</td><td>764</td></tr>
+            <tr><td>R6</td><td>85</td><td>849</td></tr>
+            <tr><td>R6</td><td>83</td><td>932</td></tr>
+            <tr><td>L5</td><td>58</td><td>1005</td></tr>
+            <tr><td>L5</td><td>65</td><td>1086</td></tr>
+            <tr><td class="highlight-call">L6 LONG</td><td>157</td><td>1243</td></tr>
+            <tr><td>60</td><td>64</td><td>1307</td></tr>
+            <tr><td>L6</td><td>88</td><td>1395</td></tr>
+            <tr><td>L5</td><td>87</td><td>1500</td></tr>
+            <tr><td>R6</td><td>81</td><td>1581</td></tr>
+            <tr><td>70</td><td>68</td><td>1648</td></tr>
+            <tr><td class="highlight-call">R4 LONG</td><td>80</td><td>1728</td></tr>
+            <tr><td>70</td><td>71</td><td>1799</td></tr>
+            <tr><td>R6</td><td>44</td><td>1843</td></tr>
+            <tr><td>L5</td><td>109</td><td>1968</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
   </div>
 
